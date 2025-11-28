@@ -16,9 +16,10 @@ class Program
         // 寫死的商品網址陣列
         var urls = new[]
         {
-            "https://www.suruga-ya.jp/product/detail/873118848",  // 有特價商品
-            "https://www.suruga-ya.jp/product/detail/873118847",  // 一般商品
-            "https://www.suruga-ya.jp/product/detail/873093949"   // 售完商品
+            "https://www.suruga-ya.jp/product/detail/873118848",
+            "https://www.suruga-ya.jp/product/detail/873118847",
+            "https://www.suruga-ya.jp/product/detail/873093949",
+            "https://www.suruga-ya.jp/product/detail/561459059"
         };
         
         Console.WriteLine($"準備爬取 {urls.Length} 個商品...\n");
@@ -36,12 +37,6 @@ class Program
                 products.Add(product);
                 Console.WriteLine($"✓ 完成: {product.Title}\n");
                 
-                // 避免請求過快，延遲 2 秒
-                if (i < urls.Length - 1)
-                {
-                    Console.WriteLine("等待 2 秒...\n");
-                    await Task.Delay(2000);
-                }
             }
             catch (Exception ex)
             {
